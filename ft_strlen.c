@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smoraes- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:26:38 by smoraes-          #+#    #+#             */
-/*   Updated: 2024/01/14 15:32:49 by smoraes-         ###   ########.fr       */
+/*   Created: 2024/01/09 13:55:49 by smoraes-          #+#    #+#             */
+/*   Updated: 2024/01/14 15:36:16 by smoraes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Checks wheter a character is an alphabet or not */
+/* Checks the length of a given string not including the null character */
 
 #include "libft.h"
+//#include <string.h>
 //#include <stdio.h>
-int	ft_isalpha(int c)
+int	ft_strlen(char *s)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z' ))
-	{
-		return (c);
-	}
-	else
-	{
-		return (0);
-	}
+	int	len;
+
+	len = 0;
+	while (*s++)
+		len++;
+	return (len);
 }
-// int main(void)
-// {
-// 	char cadena[] = ";000000sddddR(h&R1/";
-// 	int i;
-// 	for (i = 0; cadena[i]; i++)
-// 	{
-// 		printf("%c, %d\n", cadena[i], ft_isalpha(cadena[i]));
-// 	}
-// 	return (0);
-// }
+//int	main(void)
+//{
+//	char iv[10] = "test";
+//
+//	int	orig = strlen(iv);
+//	int	mine = ft_strlen(iv);
+//
+//	printf("%d, %d", orig, mine);
+//	return (0);
+//}

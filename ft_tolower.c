@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smoraes- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 11:26:38 by smoraes-          #+#    #+#             */
-/*   Updated: 2024/01/14 15:32:49 by smoraes-         ###   ########.fr       */
+/*   Created: 2024/01/10 11:07:06 by smoraes-          #+#    #+#             */
+/*   Updated: 2024/01/14 16:43:05 by smoraes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Checks wheter a character is an alphabet or not */
-
 #include "libft.h"
-//#include <stdio.h>
-int	ft_isalpha(int c)
+
+int	ft_tolower(int c)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z' ))
-	{
-		return (c);
-	}
-	else
-	{
-		return (0);
-	}
+	if (c >= 'A' && c <= 'Z')
+		c += 32;
+	return (c);
 }
-// int main(void)
-// {
-// 	char cadena[] = ";000000sddddR(h&R1/";
-// 	int i;
-// 	for (i = 0; cadena[i]; i++)
-// 	{
-// 		printf("%c, %d\n", cadena[i], ft_isalpha(cadena[i]));
-// 	}
-// 	return (0);
-// }
+//
+//int main(void)
+//{
+//	char cadena[] = "09099-=-ESTO ES una CADENA";
+//	int i;
+//
+//	for(i = 0; cadena[i]; i++)
+//		cadena[i] = tolower(cadena[i]);
+//
+//	printf("%s\n", cadena);
+//
+//	for(i = 0; cadena[i]; i++)
+//		cadena[i] = ft_tolower(cadena[i]);
+//
+//	printf("%s\n", cadena);
+//	return (0);
+//}

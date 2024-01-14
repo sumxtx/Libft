@@ -10,11 +10,11 @@ _As they may be bug or error prone, do not use them on real projects, or do your
 - [x] • isalnum  
 - [x] • isascii  
 - [x] • isprint  
-- [ ] • toupper  
-- [ ] • tolower  
-- [ ] • strlen  
-- [ ] • strlcpy  
-- [ ] • strlcat  
+- [x] • toupper  
+- [x] • tolower  
+- [x] • strlen  
+- [x] • strlcpy  
+- [x] • strlcat  
 - [ ] • strncmp  
 - [ ] • strchr  
 - [ ] • strrchr  

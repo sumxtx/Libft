@@ -6,7 +6,7 @@
 #    By: smoraes- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/14 05:19:01 by smoraes-          #+#    #+#              #
-#    Updated: 2024/01/14 13:25:03 by smoraes-         ###   ########.fr        #
+#    Updated: 2024/01/14 18:03:25 by smoraes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,10 @@ SRC	= *.c
 #SRC	= $(shell find . -type f -iname 'ft*.c')
 OBJS	= $(SRC:.c=.o)
 
-all: $(NAME)
+all: libft.a
 
-$(NAME):
-	$(CC) $(CFLAGS) -c $(SRC) $(MAINSRC)
+libft.a:
+	$(CC) $(CFLAGS) -c $(SRC)
 	$(ARS) $(NAME) ${OBJS}
 
 bin: $(OBJS) $(NAME) $(MAINOBJ)
@@ -35,7 +35,7 @@ bin: $(OBJS) $(NAME) $(MAINOBJ)
 	chmod +x $(BIN)
 
 clean:
-	rm -rf $(BIN) $(OBJS) $(MAINOBJ) $(NAME)
+	rm -rf $(BIN) $(OBJS) $(MAINOBJ) $(NAME) *.out
 fclean:
 	rm -rf $(BIN) $(OBJS) $(NAME)
 

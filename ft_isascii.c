@@ -6,7 +6,7 @@
 /*   By: smoraes- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:08:08 by smoraes-          #+#    #+#             */
-/*   Updated: 2024/01/14 13:16:49 by smoraes-         ###   ########.fr       */
+/*   Updated: 2024/01/14 15:31:32 by smoraes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 //#include <stdio.h>
 //#include <ctype.h>
-int	ft_isascii(char c)
+int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 	{
