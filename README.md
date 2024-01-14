@@ -6,10 +6,10 @@ _As they may be bug or error prone, do not use them on real projects, or do your
 ## Part 1 - Libc functions
 
 - [x] • isalpha  
-- [ ] • isdigit  
-- [ ] • isalnum  
-- [ ] • isascii  
-- [ ] • isprint  
+- [x] • isdigit  
+- [x] • isalnum  
+- [x] • isascii  
+- [x] • isprint  
 - [ ] • toupper  
 - [ ] • tolower  
 - [ ] • strlen  

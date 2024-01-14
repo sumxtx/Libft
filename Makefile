@@ -6,7 +6,7 @@
 #    By: smoraes- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/14 05:19:01 by smoraes-          #+#    #+#              #
-#    Updated: 2024/01/14 11:42:28 by smoraes-         ###   ########.fr        #
+#    Updated: 2024/01/14 13:25:03 by smoraes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,23 +17,25 @@ CFLAGS	= -Wall -Werror -Wextra
 ARS	= ar crs
 
 BIN	= bin
-MAIN	= main.o
-SRC	= $(shell find . -type f -iname ft*.c)
+MAINSRC	= main.c
+MAINOBJ	= main.o
+SRC	= *.c
+#SRC	= $(shell find . -type f -iname 'ft*.c')
 OBJS	= $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) -c $(SRC)
+	$(CC) $(CFLAGS) -c $(SRC) $(MAINSRC)
 	$(ARS) $(NAME) ${OBJS}
 
-bin: $(OBJS) $(NAME)
-	$(CC) $(CFLAGS) -c main.c -o $(MAIN)
-	$(CC) -o $(BIN) $(MAIN) -L. $(NAME)
+bin: $(OBJS) $(NAME) $(MAINOBJ)
+	$(CC) $(CFLAGS) -c $(MAINSRC) -o $(MAINOBJ)
+	$(CC) -o $(BIN) $(MAINOBJ) -L. $(NAME)
 	chmod +x $(BIN)
 
 clean:
-	rm -rf $(BIN) $(OBJS)
+	rm -rf $(BIN) $(OBJS) $(MAINOBJ) $(NAME)
 fclean:
 	rm -rf $(BIN) $(OBJS) $(NAME)
 

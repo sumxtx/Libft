@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smoraes- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/14 04:55:07 by smoraes-          #+#    #+#             */
-/*   Updated: 2024/01/14 13:24:12 by smoraes-         ###   ########.fr       */
+/*   Created: 2024/01/09 12:45:18 by smoraes-          #+#    #+#             */
+/*   Updated: 2024/01/14 12:20:09 by smoraes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
+/* Checks whether a character is a digit or not */
 
-int	ft_isalpha(char c);
-int	ft_isdigit(char c);
-int	ft_isalnum(char c);
-int	ft_isascii(char c);
-int	ft_isprint(char c);
+#include "libft.h"
+//#include <stdio.h>
+int	ft_isdigit(char c)
+{
+	if (c >= '0' && c <= '9')
+	{
+		return (c);
+	}
+	else
+	{
+		return (0);
+	}
+}
+// int main(void)
+// {
+// 	char cadena[] = ";000000sddddR(h&R1/";
+// 	int i;
+// 	for (i = 0; cadena[i]; i++)
+// 	{
+// 		printf("%c, %d\n", cadena[i], ft_isdigit(cadena[i]));
+// 	}
+// 	return (0);
+// }

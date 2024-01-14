@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smoraes- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/14 04:55:07 by smoraes-          #+#    #+#             */
-/*   Updated: 2024/01/14 13:24:12 by smoraes-         ###   ########.fr       */
+/*   Created: 2024/01/09 13:08:08 by smoraes-          #+#    #+#             */
+/*   Updated: 2024/01/14 13:16:49 by smoraes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
+/* Checks whether a character is an ascii or not */
 
-int	ft_isalpha(char c);
-int	ft_isdigit(char c);
-int	ft_isalnum(char c);
-int	ft_isascii(char c);
-int	ft_isprint(char c);
+#include "libft.h"
+//#include <stdio.h>
+//#include <ctype.h>
+int	ft_isascii(char c)
+{
+	if (c >= 0 && c <= 127)
+	{
+		return (c);
+	}
+	else
+	{
+		return (0);
+	}
+}
+//int main ()
+//{
+//	int i, j;
+//	for (i = j = 0; i <= 256; i++)
+//	{
+//		printf("%d %c, %d, %d\n", j++, i, isascii(i), ft_isalnum(i));
+//	}
+//	return 0;
+//}
