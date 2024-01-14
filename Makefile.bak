@@ -1,0 +1,87 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: smoraes- <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/01/14 05:19:01 by smoraes-          #+#    #+#              #
+#    Updated: 2024/01/14 09:53:47 by smoraes-         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# target: dependencies
+#	commands
+#
+#
+#
+#
+#
+
+NAME = libft.a
+SRC = $(shell find . -name "*.c")
+OBJ = ${SRC:.c=.o}
+CFLAGS = -Wall -Werror -Wextra
+COMPILE = gcc $(CFLAGS) -c
+LIB = ar rcs $(NAME)
+REMOVE = rm -f
+
+all: $(NAME)
+
+bin: $
+
+$(NAME):
+	@$(COMPILE) $(SRC)
+	@$(LIB) $(OBJ)
+
+bonus:
+	@$(COMPILE) $(SRC_BONUS)
+	@$(LIB) $(OBJ_BONUS)
+	@$(RANLIB)
+
+clean:
+	@$(REMOVE) $(OBJ)
+
+fclean: clean
+	@$(REMOVE) $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
+
+
+##CC=cc 
+#CFLAGS=-Wall -Wextra -Werror
+#SRC = $(shell find . -name "*.c")
+#OBJ = ${SRC:.c=.o} 
+#LIB = ar rcs $(NAME)
+#
+#$(NAME):
+#	@$(COMPILE) $(SRC)
+#	@$(LIB) $(OBJ)
+#
+#all: $(BINARY)
+#
+#$(BINARY): $(OBJ)
+#	$(CC) -o $@ $^ -L. $(LIB)
+#
+#$(LIB): $(OBJ) 
+#	ar rcs $(NAME) $(OBJ)
+#
+#%.o: %.c
+#	$(CC) $(CFLAGS) -c -o $@ $^
+#
+#clean:
+#	rm -rf $(BINARY) $(OBJ)
+#
+#
+##
+##all: 
+### gcc -o main main.o -L. libfit.a
+##lib: 
+### ar rcs libft.a ft_lib*.o, 
+##
+## gcc -c ft_lib.c -o ft_lib.o, 
+### gcc -c main.c -o main.o, 
+##
+#
