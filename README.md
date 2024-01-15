@@ -15,7 +15,7 @@ _As they may be bug or error prone, do not use them on real projects, or do your
 - [x] • strlen  
 - [x] • strlcpy  
 - [x] • strlcat  
-- [ ] • strncmp  
+- [x] • strncmp  
 - [ ] • strchr  
 - [ ] • strrchr  
 - [ ] • strnstr  

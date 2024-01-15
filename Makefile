@@ -6,7 +6,7 @@
 #    By: smoraes- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/14 05:19:01 by smoraes-          #+#    #+#              #
-#    Updated: 2024/01/14 18:03:25 by smoraes-         ###   ########.fr        #
+#    Updated: 2024/01/15 08:35:03 by smoraes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ libft.a:
 	$(ARS) $(NAME) ${OBJS}
 
 bin: $(OBJS) $(NAME) $(MAINOBJ)
-	$(CC) $(CFLAGS) -c $(MAINSRC) -o $(MAINOBJ)
-	$(CC) -o $(BIN) $(MAINOBJ) -L. $(NAME)
+	$(CC) $(CFLAGS) -c $(MAINSRC)
+	$(CC) $(CFLAGS) -o $(BIN) $(MAINOBJ) -L. $(NAME)
 	chmod +x $(BIN)
 
 clean:

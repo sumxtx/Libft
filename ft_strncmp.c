@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smoraes- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/14 17:37:45 by smoraes-          #+#    #+#             */
-/*   Updated: 2024/01/15 06:19:48 by smoraes-         ###   ########.fr       */
+/*   Created: 2024/01/11 03:42:04 by smoraes-          #+#    #+#             */
+/*   Updated: 2024/01/15 06:40:07 by smoraes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	dlen;
+	int	count;
 
-	dlen = ft_strlen(dst);
-	dst[dlen + dstsize] = '\0';
-	while (dstsize--)
-		dst[dlen++] = *src++;
-	return (ft_strlen(dst));
+	count = 0;
+	while (n-- && *s1 && *s2)
+	{
+		if (*s1 == *s2)
+			count += (*s1++ - *s2++);
+		else if (*s1 > *s2)
+			count += (*s1++ + *s2++);
+		else if (*s1 < *s2)
+			count += (*s1++ - *s2++);
+	}
+	return (count);
 }
