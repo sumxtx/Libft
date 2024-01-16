@@ -1,4 +1,4 @@
-/* *******************************************aa******************************* */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: smoraes- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 04:57:45 by smoraes-          #+#    #+#             */
-/*   Updated: 2024/01/15 06:37:45 by smoraes-         ###   ########.fr       */
+/*   Updated: 2024/01/16 10:11:14 by smoraes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,104 @@ int	main(int argc, char **argv)
 {
 	
 	(void)argc;
-	char *ret2;
+//	char str1[15];
+//	char str2[15];
+
+	printf("argv1: %s\n", argv[1]);
+
+	printf("argv2: %s\n", argv[2]);
+
+	int argv3 = atoi(&argv[3][0]);
+	printf("argv3: %c\n", argv3);
+
+	int ret;
+	int ret2;
+	
+	//memcpy(str1, "abcdEF", 6);
+	//memcpy(str2, "abcdef", 6);
+	
+	ret = memcmp(argv[1], argv[2], argv3);
+	ret2 = ft_memcmp(argv[1], argv[2], argv3);
+	if (ret > 0)
+	{
+		printf("str2 is less than str1\n");
+	}
+	else if (ret < 0)
+	{
+		printf("str1 is less than str2\n");
+	}
+	else
+	{
+		printf("str1 is equal to str2\n");
+	}
+	if (ret2 > 0)
+	{
+		printf("str2 is less than str1\n");
+	}
+	else if (ret2 < 0)
+	{
+		printf("str1 is less than str2\n");
+	}
+	else
+	{
+		printf("str1 is equal to str2\n");
+	}
+//	//const char str[] = "aasapdiifpoaidspofiofopaodspfopopop";
+//	//const char ch = '.';
+//	char *ret;
+//	char *ret2;
+//
+//	int argv2 = ft_isascii(argv[2][0]);
+//	printf("argv2: %c\n", argv2);
+//
+//	int argv3 = ft_isdigit(argv[3][0]);
+//	printf("argv3: %c\n", argv3);
+//
+//	ret = memchr(argv[1], argv2, argv3);
+//	ret2 = ft_memchr(argv[1], argv2, argv3);
+//
+//	printf("String after |%c| is - |%s|\n", argv2, ret);
+//	printf("String after |%c| is - |%s|\n", argv2, ret2);
+//	(void)argc;
+//	char buffer[20] = "123456789012346789";
+//	//(void)argv;
+//	printf("\nbefore memcpy: %s \n", argv[1]);
+//	ft_memcpy(buffer, argv[1], ft_strlen(buffer));
+//	printf("\nafter memcpy: %s \n", buffer);
+	
+//int main(void)
+//{
+//
+	//printf("\n-----------------OG BZERO------------------");
+	////char buffer[80] = "adfa9sdf9a9df-a0s9df0-";
+	//printf("\nbefore bzero: %s \n", argv[1]);
+
+	//bzero(argv[1], strlen(argv[1]));
+	//printf("\nafter bzero: %s \n", argv[1]);
+
+	//printf("\n-----------------MY BZERO------------------");
+	////char buffer2[80] = "padfpoiasdpofiaosidfi'-";
+	//printf("\nbefore ft_bzero: %s \n", argv[2]);
+	//
+	//ft_bzero(argv[2], strlen(argv[2]));
+	//printf("\nafter ft_bzero: %s \n", argv[2]);
+//
+//
+//
+//	return (0);
+//}
+	//char v[10] = "Testing";
+	//char *ret2;
+
+	//ft_memset(v, '0', 7);
 	//int del = argv[2][0];
-	//printf("c %c\n", del);
+	//printf("c %s\n", v);
 
-	ret2 = ft_strdup(argv[1]);	
+	//ret2 = ft_strdup(argv[1]);	
 
-	printf("%s\n", ret2);
-	printf("%s\n", ret2);
-	free(ret2);
+	//printf("%s\n", ret2);
+	//printf("%s\n", ret2);
+	//free(ret2);
 	/*
 	//(void)argc;
 	//char *ret;

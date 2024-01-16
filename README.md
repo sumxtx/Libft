@@ -5,6 +5,7 @@ _As they may be bug or error prone, do not use them on real projects, or do your
 
 ## Part 1 - Libc functions
 
+- [x] • Makefile bien chingon
 - [x] • isalpha  
 - [x] • isdigit  
 - [x] • isalnum  
@@ -19,13 +20,13 @@ _As they may be bug or error prone, do not use them on real projects, or do your
 - [x] • strchr  
 - [x] • strrchr  
 - [ ] • strnstr  
-- [ ] • strdup  
-- [ ] • memset  
-- [ ] • bzero  
-- [ ] • memcpy  
+- [x] • strdup  
+- [x] • memset  
+- [x] • bzero  
+- [x] • memcpy  
 - [ ] • memmove  
-- [ ] • memchr  
-- [ ] • memcmp  
+- [x] • memchr  
+- [x] • memcmp  
 - [ ] • atoi  
 - [ ] • calloc    
 

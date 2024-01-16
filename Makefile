@@ -6,7 +6,7 @@
 #    By: smoraes- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/14 05:19:01 by smoraes-          #+#    #+#              #
-#    Updated: 2024/01/16 06:57:36 by smoraes-         ###   ########.fr        #
+#    Updated: 2024/01/16 09:45:36 by smoraes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,13 @@ BIN	= lbft
 SRC	= ft_isalnum.c ft_isalpha.c ft_isascii.c  ft_isdigit.c  ft_isprint.c\
 	  ft_strchr.c ft_strdup.c ft_strlcat.c ft_strlcpy.c ft_strlen.c\
 	  ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_tolower.c ft_toupper.c\
-	  main.c
+	  ft_memset.c ft_bzero.c ft_memcpy.c ft_memchr.c ft_memcmp.c
+MSRC	= main.c
 OBJS	= $(SRC:.c=.o)
+MOBJ	= main.o
 RM	= rm -rf
+
+
 .PHONY: all clean fclean re flirt
 MAKEFLAGS += --silent
 
@@ -38,11 +42,12 @@ $(NAME):$(OBJS)
 	cc $(CFLAGS) -c $^ -o $@
 
 # build a main
-bin: $(OBJS) $(NAME)
+bin: $(OBJS) $(NAME) $(MSRC) $(MOBJ)
 	@echo "\n\n(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧ Compilando, espere unos segundos..."
-	$(CC) $(CFLAGS) -o $(BIN) -L. $(NAME)
+	$(CC) $(CFLAGS) -c $(MSRC) -o $(MOBJ)
+	$(CC) $(CFLAGS) $(MOBJ) $(OBJS) -o $(BIN) -L. $(NAME)
 	chmod +x $(BIN)
-	@echo "\n\n(•̀ᴗ•́)و Ejecutable $(BIN) generado!"
+	@echo "\n\n(*・‿・)ノ⌒*:･ﾟ✧ Ejecutable \"$(BIN)\" generado!"
 
 flirt:
 	@echo "\n\n (◍•ᴗ•◍)❤ Hi, Sweetie!!! How ya doing??\n\n"
@@ -53,10 +58,12 @@ clean:
 	@echo "\n\n¯\_(ツ)_/¯ Objectos removidos!"
 fclean:
 	$(RM) $(OBJS) $(BIN)
-	@echo "\n\n¯\_༼ ಥ ‿ ಥ ༽_/¯ Objectos y Ejecutable removidos!"
+	@echo "\n\n¯\_༼ಥ ‿ಥ༽_/¯ Objectos y Ejecutable removidos!"
 re: 
 	$(RM) $(OBJS) $(BIN) $(NAME) *.out *.s *.i
-	@echo "\n\n alaaa!!! a tomar x qele   (╯°□°）╯︵ ┻━┻$(NAME)"
-	@sleep 2
+	@echo "\n\n AaAla!!! a tomar x qele   (╯°□°）╯︵ ┻━┻$(NAME)"
+	@sleep 3
 	@clear
 	@echo "\n\n ╾━╤デ╦︻(▀̿Ĺ̯▀̿ ̿) What happened here? Exactly. Nothing!"
+	@sleep 3
+	@clear
