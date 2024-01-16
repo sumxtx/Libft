@@ -24,7 +24,6 @@ int	main(int argc, char **argv)
 
 	printf("%s\n", ret2);
 	printf("%s\n", ret2);
-	printf("%s\n", ret2);
 	free(ret2);
 	/*
 	//(void)argc;
