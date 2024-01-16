@@ -16,16 +16,16 @@ int	main(int argc, char **argv)
 {
 	
 	(void)argc;
-	char *ret;
 	char *ret2;
 	//int del = argv[2][0];
 	//printf("c %c\n", del);
 
-	ret = strrchr(argv[1], '.');
-	ret2 = ft_strrchr(argv[1], '.');	
+	ret2 = ft_strdup(argv[1]);	
 
-	printf("String after |%c| is - |%s|\n", '.', ret);
-	printf("String after |%c| is - |%s|\n", '.', ret2);
+	printf("%s\n", ret2);
+	printf("%s\n", ret2);
+	printf("%s\n", ret2);
+	free(ret2);
 	/*
 	//(void)argc;
 	//char *ret;

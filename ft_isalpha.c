@@ -6,7 +6,7 @@
 /*   By: smoraes- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:26:38 by smoraes-          #+#    #+#             */
-/*   Updated: 2024/01/14 15:32:49 by smoraes-         ###   ########.fr       */
+/*   Updated: 2024/01/16 05:59:53 by smoraes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ int	ft_isalpha(int c)
 // 	int i;
 // 	for (i = 0; cadena[i]; i++)
 // 	{
+// 		printf("%c, %d\n", cadena[i], ft_isalpha(cadena[i]));
+// 		printf("%c, %d\n", cadena[i], ft_isalpha(cadena[i]));
+// 		printf("%c, %d\n", cadena[i], ft_isalpha(cadena[i]));
+// 		printf("%c, %d\n", cadena[i], ft_isalpha(cadena[i]));
 // 		printf("%c, %d\n", cadena[i], ft_isalpha(cadena[i]));
 // 	}
 // 	return (0);

@@ -16,8 +16,8 @@ _As they may be bug or error prone, do not use them on real projects, or do your
 - [x] • strlcpy  
 - [x] • strlcat  
 - [x] • strncmp  
-- [ ] • strchr  
-- [ ] • strrchr  
+- [x] • strchr  
+- [x] • strrchr  
 - [ ] • strnstr  
 - [ ] • strdup  
 - [ ] • memset  
