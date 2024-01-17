@@ -31,3 +31,5 @@ _As they may be bug or error prone, do not use them on real projects, or do your
 - [ ] • calloc    
 
 ## Part 2 - Additional functions
+
+- [ ] • substr    

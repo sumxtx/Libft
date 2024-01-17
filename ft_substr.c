@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smoraes- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 10:14:57 by smoraes-          #+#    #+#             */
-/*   Updated: 2024/01/16 17:41:35 by smoraes-         ###   ########.fr       */
+/*   Created: 2024/01/17 17:01:56 by smoraes-          #+#    #+#             */
+/*   Updated: 2024/01/17 18:02:24 by smoraes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-inf ft_atoi(const char *str)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	while(*str 
-	
-	return (convrtd);
-}
+	int			pind;
+	char			*ptr;
+	unsigned int		ind;
 
-int main(int argc, char **argv)
-{
-	(void)argc;
-	int ret = atoi(argv[1]);
-	int ret2 = ft_atoi(argv[1]);
-	printf("%d\n", ret);
-	printf("%d\n", ret2);
-	return (0);
+	ptr = (char *) malloc(len);
+	if (ptr == NULL)
+		return (0);
+	else
+	{
+		ind = start;
+		pind = 0;
+		while (*s && len--)
+		{
+			ptr[pind] = s[ind];
+			pind++;
+			ind++;
+		}
+	}
+	return (ptr);
 }
