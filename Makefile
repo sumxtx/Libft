@@ -1,63 +1,72 @@
-# Vars
-CC			= cc -g
-RM			= rm -rf
-ARS			= ar -rcs
-HEAD		= libft.h
-NAME		= libft.a
-CFLAGS		= -Wall -Werror -Wextra
-BONUS		= .bonus
-#MAKEFLAGS += --silent
+# Variables
+NAME				= libft.a
+CC					= cc
+CFLAGS			= -Wall -Werror -Wextra
+DFLAGS			= -MMD -MP
+DBG   			= -g
+ARS					= ar -rcs
+INC					= libft.h
+INC_DIR 		= ./inc
+SRC_DIR			= ./src
+OBJ_DIR 		= ./obj
+DEP_DIR			= ./dep
+RM					= rm -rf
 .PHONY:		all clean fclean re bonus
+#MAKEFLAGS += --silent
 
+# Include Dependecies
+DEPS = ${DEP_DIR} ${BDEP_DIR}
+-include ${DEPS}
 
-
-# Mandatory Part
-SRC	=\
-	ft_isalnum.c	ft_isalpha.c	ft_isascii.c	ft_strtrim.c\
-	ft_isdigit.c	ft_isprint.c	ft_strchr.c		ft_calloc.c\
-	ft_strdup.c		ft_strlcat.c	ft_strlcpy.c	ft_strtrim.c\
-	ft_strlen.c		ft_strncmp.c	ft_strnstr.c	ft_strmapi.c\
-	ft_strrchr.c	ft_tolower.c	ft_toupper.c	ft_memset.c\
-	ft_bzero.c		ft_memcpy.c		ft_memmove.c	ft_memchr.c\
-	ft_memcmp.c		ft_strjoin.c	ft_split.c		ft_substr.c\
-	ft_atoi.c		ft_putchar_fd.c ft_putstr_fd.c	ft_putendl_fd.c\
-	ft_putnbr_fd.c	ft_itoa.c		ft_striteri.c
+# Mandatory Part Source Files
+SRC_FILES					=\
+	ft_isalnum		ft_isalpha		ft_isascii\
+	ft_isdigit		ft_isprint		ft_strchr			ft_calloc\
+	ft_strdup			ft_strlcat		ft_strlcpy		ft_strtrim\
+	ft_strlen			ft_strncmp		ft_strnstr		ft_strmapi\
+	ft_strrchr		ft_tolower		ft_toupper		ft_memset\
+	ft_bzero			ft_memcpy			ft_memmove		ft_memchr\
+	ft_memcmp			ft_strjoin		ft_split			ft_substr\
+	ft_atoi				ft_putchar_fd ft_putstr_fd	ft_putendl_fd\
+	ft_putnbr_fd	ft_itoa				ft_striteri
 	  
-OBJS 		= $(SRC:.c=.o)
+# Bonus Part Source Files
+BSRC_FILES 				=\
+	ft_lstnew_bonus 			ft_lstadd_front_bonus	ft_lstsize_bonus\
+	ft_lstadd_back_bonus	ft_lstlast_bonus			ft_lstdelone_bonus\
+	ft_lstclear_bonus			ft_lstiter_bonus			ft_lstmap_bonus
 
-# Bonus Part
-BONUS_SRC 	=\
-	ft_lstnew_bonus.c 		ft_lstadd_front_bonus.c	ft_lstsize_bonus.c\
-	ft_lstadd_back_bonus.c	ft_lstlast_bonus.c		ft_lstdelone_bonus.c\
-	ft_lstclear_bonus.c		ft_lstiter_bonus.c		ft_lstmap_bonus.c\
+# Create Source Files and Object files objects (filename.c, filename.o)
+SRC					= $(addprefix ${SRC_DIR}/, $(addsuffix .c,${SRC_FILES} ${BSRC_FILES}))
+OBJ 				= $(addprefix ${OBJ_DIR}/, $(addsuffix .o,${SRC_FILES} ${BSRC_FILES}))
+DEP					= $(addprefix ${DEP_DIR}/, $(addsuffix .d,${SRC_FILES} ${BSRC_FILES}))
+#Bonus
+#BSRC				= $(addprefix ${BSRC_DIR}/,$(addsuffix .c,${BOBJ_FILES}))
+#BOBJS 			= $(addprefix ${BOBJ_DIR}/,$(addsuffix .c,${BOBJ_FILES}))
+#BDEPS				= $(addprefix ${BDEP_DIR}/,$(addsuffix .d,${BOBJ_FILES}))
 
-BONUS_OBJS 	= $(BONUS_SRC:.c=.o) 
+# Make Recipes 
+all: ${NAME}
 
-all: $(NAME)
+${NAME}: ${OBJ}
+	$(ARS) $(NAME) $(OBJ)
 
-$(NAME):$(OBJS)
-	$(ARS) $(NAME) $(OBJS)
-
-%.o:%.c libft.h Makefile
-	cc $(CFLAGS) -c $< -o $@
+${OBJ}: ${SRC} Makefile ${INC_DIR}/${INC}
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) ${DFLAGS} -c $< -I ${INC_DIR} -o $@
 
 # Bonus Part 
-# We create a file called .bonus to do a target-like for the bonus
-# When calling the bonus rule this file get touched, so we can timestamp
-# Once we call make again and theres no change on name, neither on the 
-# BONUS_OBJs the timestamp ins't affected, so no relink
-bonus: $(BONUS)
-
-$(BONUS):$(NAME) $(BONUS_OBJS)
-	$(ARS) $(NAME) $(BONUS_OBJS)
-	touch $@
+#bonus: $(BONUS)
+#$(BONUS):$(NAME) $(BONUS_OBJS)
+#	$(ARS) $(NAME) $(BONUS_OBJS)
+#	touch $@
 
 #cleanning
 clean:
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME) $(BONUS) bonus *.out *.a *.s *.i *.bc
+	$(RM) $(NAME) $(BONUS) *.out *.a *.s *.i *.bc
 
 #rebuild
 re: fclean all
