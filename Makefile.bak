@@ -2,7 +2,7 @@
 CC			= cc -g
 RM			= rm -rf
 ARS			= ar -rcs
-HEAD		= libft.h
+HEAD		= -I ./inc/
 NAME		= libft.a
 CFLAGS		= -Wall -Werror -Wextra
 BONUS		= .bonus
