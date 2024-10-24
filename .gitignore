@@ -3,4 +3,5 @@
 *.dSYM/
 *.o
 /obj
+/bin
 *.d

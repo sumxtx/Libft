@@ -33,51 +33,8 @@ RM	= rm -rf
 # Include Dependecies
 -include $(DEPS)
 
-# Mandatory Part Source Files
-SRC_FILES =\
-	isalnum \
-	isalpha \
-	isascii \
-	isdigit \
-	isprint \
-	strchr \
-	calloc \
-	strdup \
-	strlcat \
-	strlcpy \
-	strtrim \
-	strlen \
-	strncmp \
-	strnstr \
-	strmapi \
-	strrchr \
-	tolower \
-	toupper \
-	memset \
-	bzero \
-	memcpy \
-	memmove \
-	memchr \
-	memcmp \
-	strjoin \
-	split \
-	substr \
-	atoi \
-	putchar_fd \
-	putstr_fd \
-	putendl_fd \
-	putnbr_fd \
-	itoa \
-	striteri \
-	lstnew_bonus \
-	lstadd_front_bonus \
-	lstsize_bonus \
-	lstadd_back_bonus \
-	lstlast_bonus \
-	lstdelone_bonus\
-	lstclear_bonus \
-	lstiter_bonus \
-	lstmap_bonus
+# Include Source File list
+-include ./includes/source_list
 
 # Create Object files From Source Files (filename.c -> filename.o)
 OBJS := $(foreach file,$(SRC_FILES),$(addprefix $(OBJ_DIR)/ft_, $(addsuffix .o,$(file))))
@@ -111,13 +68,16 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile $(INC_DIR)/$(HEADER)
 $(MAIN): $(BIN_DIR)
 	@echo $(MAIN)
 
-$(BIN_DIR)
+$(BIN_DIR):
+	@mkdir $(BIN_DIR)
 
+
+# Cleaning and Deletions
 clean:
 	$(RM) $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME) *.out *.a *.s *.i *.bc
+	$(RM) $(NAME) $(BIN_DIR) *.a *.s *.i *.bc
 
 #rebuild
 re: fclean all

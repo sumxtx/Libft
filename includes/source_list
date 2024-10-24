@@ -1,0 +1,44 @@
+SRC_FILES =\
+	isalnum \
+	isalpha \
+	isascii \
+	isdigit \
+	isprint \
+	strchr \
+	calloc \
+	strdup \
+	strlcat \
+	strlcpy \
+	strtrim \
+	strlen \
+	strncmp \
+	strnstr \
+	strmapi \
+	strrchr \
+	tolower \
+	toupper \
+	memset \
+	bzero \
+	memcpy \
+	memmove \
+	memchr \
+	memcmp \
+	strjoin \
+	split \
+	substr \
+	atoi \
+	putchar_fd \
+	putstr_fd \
+	putendl_fd \
+	putnbr_fd \
+	itoa \
+	striteri \
+	lstnew_bonus \
+	lstadd_front_bonus \
+	lstsize_bonus \
+	lstadd_back_bonus \
+	lstlast_bonus \
+	lstdelone_bonus\
+	lstclear_bonus \
+	lstiter_bonus \
+	lstmap_bonus
