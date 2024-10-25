@@ -1,5 +1,6 @@
 ## TODO
 
+- [x] Refactor the Makefile
 - [ ] Check all for undefined behaviours and typical bugs and leaks
 - [ ] Check -1 behaviour in ft_atoi.c
 - [ ] Fix the bug on the split, and refactor the split to be more clean

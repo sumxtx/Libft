@@ -5,6 +5,7 @@ char	*is_positive(long count, long n);
 char	*is_negative(long count, long n);
 char	*is_else(long n);
 
+
 char	*ft_itoa(int n)
 {
 	long	m;

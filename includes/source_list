@@ -1,4 +1,5 @@
 SRC_FILES =\
+	isspace \
 	isalnum \
 	isalpha \
 	isascii \

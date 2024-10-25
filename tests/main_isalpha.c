@@ -1,4 +1,4 @@
-#include "../inc/libft.h"
+#include "libft.h"
 #include <stdio.h>
 
 
@@ -23,7 +23,7 @@ int main(int ac, char **av)
                 printf ("ASCII Table\n");
                 while (i < 256)
                 {
-                        if (ft_isspace(i))
+                        if (ft_isalpha(i))
                         {
                                 printf("%d: %c is alphabetical.\n", i, i);
                         }
