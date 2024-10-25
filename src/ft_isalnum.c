@@ -1,14 +1,11 @@
 
-/*  Checks whether a character is an alphanumeric or not 
- *  It's cleaner to do it with ft_isalpha and ft_isdigit
- *  But i prefer it to be "stand-alone"
- * */
+/*  Checks whether a character is an alphanumeric or not */
 
 #include "libft.h"
 
 int ft_isalnum(int c)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z' ) || (c >= '0' && c <= '9'))
+	if (ft_isalpha(c) || ft_isdigit(c))
 		return (1);
 	return (0);
 }

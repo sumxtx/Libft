@@ -3,6 +3,7 @@
 _Those functions are for educational purposes only_  
 _As they may be bug or error prone, do not use them on real projects, or do your own checks_  
 
+_Disclaimer: I try to keep the 42 Style, but it's not [normalized](https://github.com/sumxtx/norminette). Take it in consideration_
 
 ### Usage
 - Help Usage, Default Target

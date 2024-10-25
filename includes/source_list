@@ -5,6 +5,8 @@ SRC_FILES =\
 	isascii \
 	isdigit \
 	isprint \
+	islower \
+	isupper \
 	strchr \
 	calloc \
 	strdup \
