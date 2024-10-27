@@ -1,18 +1,18 @@
 
-/* The memset() function writes len bytes of value c (converted to an unsigned 
- * char) to the string b
- * The memset() function returns its first argument. */
+/* Writes n bytes of value c to the memory area pointed by s
+ * The memset() function returns a pointer to the memory area s 
+ */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char	ch;
 	unsigned char	*str;
 
 	ch = c;
-	str = b;
-	while (len--)
+	str = s;
+	while (n--)
 		*str++ = ch;
-	return (b);
+	return (s);
 }

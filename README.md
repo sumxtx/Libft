@@ -40,29 +40,28 @@ make MAIN=<functionName> DEBUG=y
 
 ## Part 1 - Libc functions
 
-- [x] •• isspace
 - [x] •• isalpha  
 - [x] •• isdigit  
 - [x] •• isalnum  
 - [x] •• isascii  
 - [x] •• isprint  
-- [x] •• toupper  
-- [x] •• tolower  
 - [x] •• strlen  
-- [x] •• strlcpy  
-- [x] •• strlcat  
-- [x] •• strncmp  
-- [x] •• strchr  
-- [x] •• strrchr  
-- [x] •• strnstr  
-- [x] •• strdup  
 - [x] •• memset  
 - [x] •• bzero  
 - [x] •• memcpy  
 - [x] •• memmove  
+- [x] •• strlcpy  
+- [x] •• strlcat  
+- [x] •• toupper  
+- [x] •• tolower  
+- [x] •• strchr  
+- [x] •• strrchr  
+- [x] •• strncmp  
 - [x] •• memchr  
 - [x] •• memcmp  
+- [x] •• strnstr  
 - [x] •• atoi  
+- [x] •• strdup  
 - [x] •• calloc    
 
 ## Part 2 - Additional functions
@@ -72,7 +71,6 @@ make MAIN=<functionName> DEBUG=y
 - [x] •• strtrim  
 - [x] •• split  
 - [x] •• itoa  
-- [x] •• atob
 - [x] •• strmapi
 - [x] •• striteri
 - [x] •• putchar_fd
@@ -91,4 +89,12 @@ make MAIN=<functionName> DEBUG=y
 - [x] •• lstclear
 - [x] •• lstiter
 - [x] •• lstmap
+
+## Addendum
+
+- [x] •• isspace  
+- [x] •• isupper  
+- [x] •• islower  
+- [ ] •• atob  
+- [ ] •• strnlen  
 

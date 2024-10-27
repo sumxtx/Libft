@@ -38,5 +38,5 @@ size_t ft_strlcpy(char *dst, const char *src, size_t size)
 	{
 		ft_memcpy(dst, src, len_src +1);
 	}
-	return(len_src)
+	return(len_src);
 }
