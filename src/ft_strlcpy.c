@@ -1,48 +1,42 @@
-/* Copy string src to buffer dst of size dsize.  
- * At most dsize-1
- * chars will be copied.  
- * Always NUL terminates (unless dsize == 0).
- * Returns strlen(src); 
- * if retval >= dsize, truncation occurred.
- *
- * Broken when the src is bigger than the destination and we pass a bigger 
- * dstsize then the destination buffer size.
- *
- * size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
- *{
- *	size_t	i;
- *
- *	i = 0;
- *	if (!dst || !src)
- *		return (0);
- *	if (dstsize == 0)
- *		return (ft_strlen((char *) src));
- *	while (src[i] != '\0' && i < dstsize -1)
- *	{
- *		dst[i] = src[i];
- *		i++;
- *	}
- *	dst[i] = '\0';
- *	return (ft_strlen((char *)src));
- *}
- */
+
+/* 
+  Copies the characters from a source string to a destination string
+  It Assumes that src is null-terminated 
+  And null-terminates dst
+
+	// glibc biblically accurate version
+	if the length of the source is greater or equal the size we want to copy
+	if the size is greater than zero, else return
+	only copies size
+	nullterminates as we didn't reach any null terminating character
+	else, the length of source is smaller than the size we want to copy
+	only copies the length of the source + 1
+	memcpy will also copy the nullterminate character
+
+	returns the source length
+	if size is equal zero returns 0
+*/
+
 #include "libft.h"
 #include <stdio.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t	i;
+	size_t len_src;
 
-	i = 0;
-	if (dstsize > 0)
+	len_src = ft_strlen(src);
+	if (len_src >= size)
 	{
-		while (src && src[i] != '\0' && i < dstsize -1)
+		if (size > 0)
 		{
-			dst[i] = src[i];
-			i++;
+			ft_memcpy(dst, src, size);
+			dst[size -1] = '\0';
 		}
-		if (src)
-			dst[i] = '\0';
+
 	}
-	return (ft_strlen((char *)src));
+	else
+	{
+		ft_memcpy(dst, src, len_src +1);
+	}
+	return(len_src)
 }
