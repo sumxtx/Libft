@@ -1,5 +1,5 @@
 
-#include "libft.h"
+#include "libft_lst.h"
 /*
 ptr.content			//	. direct access member
 ptr -> content		//	-> poitner access member

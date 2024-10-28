@@ -4,10 +4,11 @@ NAME		= libft.a
 # Compiler And Flags
 CC		= gcc
 CFLAGS		= -Wall -Werror -Wextra
-DEP_FLAGS	= -MMD -MP
+DEP_FLAGS	= -MMD
 
 # Headers
 HEADER		= libft.h
+LST_HEADER	= libft_lst.h
 
 # Directories
 INC_DIR 	= ./includes/
@@ -52,13 +53,13 @@ endif
 # Make Recipes only for all 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJS)
+$(NAME): $(OBJ_DIR) $(OBJS) 
 	$(ARS) $(NAME) $(OBJS)
 
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile $(INC_DIR)$(HEADER)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile $(INC_DIR)$(HEADER) $(INC_DIR)$(HEADER) $(INC_DIR)$(LST_HEADER)
 	$(CC) $(CFLAGS) $(DEP_FLAGS) -I $(INC_DIR) -c $< -o $@
 
 # Make Recipe for a Single Binary (Debugging and testing purposes)

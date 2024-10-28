@@ -20,8 +20,8 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 		return (NULL);
 
 	unsigned char		*dstp;
-	unsigned long int 	addr_dstp
-	unsigned long int 	addr_srcp
+	unsigned long int 	addr_dstp;
+	unsigned long int 	addr_srcp;
 	const unsigned char	*srcp;
 
 	dstp = dst;

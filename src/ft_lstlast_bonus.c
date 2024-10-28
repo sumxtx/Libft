@@ -1,5 +1,5 @@
 
-#include "libft.h"
+#include "libft_lst.h"
 
 /*
    t_list	*ft_lstlast(t_list *lst)
