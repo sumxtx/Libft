@@ -1,20 +1,21 @@
 
+/* Returns a pointer to the first occurrence of character c in the string s. */
+
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char *ft_strchr(const char *s, int c)
 {
-	char	ch;
-	int		ind;
+	size_t i;
 
-	ch = c;
-	ind = 0;
-	while (s[ind] != '\0')
+	i = 0;
+	while (s[i] != '\0')
 	{
-		if (s[ind] == ch)
-			return ((char *)&s[ind]);
-		ind++;
+		if (s[i] == (char)c)
+			return ((char *)s +i);
+		i++;
 	}
-	if (s[ind] == ch)
-		return ((char *)&s[ind]);
+
+	if (s[i] == (char)c)
+		return ((char *)s +i);
 	return (NULL);
 }

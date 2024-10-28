@@ -3,20 +3,19 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		len;
-	char	ch;
+	size_t	i;
 	char	*str;
 
-	ch = c;
-	str = (char *)s;
-	len = ft_strlen(str);
-	while (len >= 0)
+	i = 0;
+	str = NULL;
+	while (s[i] != '\0')
 	{
-		if (str[len] == ch)
-		{
-			return (&str[len]);
-		}
-		len--;
+		if (s[i] == (char)c)
+			str = ((char *)s + i);
+		i++;
 	}
-	return (NULL);
+	if (s[i] == (char)c)
+		str = ((char *)s + i);
+
+	return (str);
 }
