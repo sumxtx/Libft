@@ -95,6 +95,7 @@ make MAIN=<functionName> DEBUG=y
 - [x] •• isspace  
 - [x] •• isupper  
 - [x] •• islower  
+- [x] •• strnlen  
+- [x] •• strndup  
 - [ ] •• atob  
-- [ ] •• strnlen  
 

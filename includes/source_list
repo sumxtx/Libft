@@ -10,6 +10,7 @@ SRC_FILES =\
 	strchr \
 	calloc \
 	strdup \
+	strndup \
 	strlcat \
 	strlcpy \
 	strtrim \
