@@ -125,5 +125,5 @@ int main()
     for(ni = 0; s[ni] != NULL; ni++)
         printf("%s", s[ni]);
 
-    ft_clean(s, ni);
+    ft_clean(s, ni+1);
 }
