@@ -16,7 +16,7 @@ char	**ft_split(const char *s, char c)
 	if (!str_ar)
 		return (NULL);
 	if ((create_sub(s, str_ar, n_word, c)) == NULL)
-		return (ft_clean(str_ar, n_word));
+		return (ft_clean(str_ar, n_word + 1));
 	fill_sub(s, str_ar, n_word, c);
 	return (str_ar);
 }
@@ -45,30 +45,27 @@ size_t	count_words(const char *s, char c)
 
 char	*create_sub(const char *s, char **str_ar, int n_word, char c)
 {
-	int	j;
-	int	size;
+    int	j;
+    int	size;
 
-	j = 0;
-	size = 0;
-	while (j < n_word)
-	{
-		while (*s)
-		{
-			while (*s == c && *s)
-				s++;
-			while (*s != c && *s)
-			{
-				size++;
-				s++;
-			}
-			str_ar[j] = malloc(size * sizeof(char) + 1);
-			if (!str_ar[j])
-				return (NULL);
-			j++;
-			size = 0;
-		}
-	}
-	return ("succes");
+    j = 0;
+    size = 0;
+    while (j < n_word)
+    {
+        while (*s == c && *s != '\0')
+            s++;
+        while (*s != c && *s != '\0')
+        {
+            size++;
+            s++;
+        }
+        str_ar[j] = malloc(size * sizeof(char) + 1);
+        if (!str_ar[j])
+            return (NULL);
+        j++;
+        size = 0;
+    }
+    return ("succes");
 }
 
 void	fill_sub(const char *s, char **str_ar, int n_word, char c)
@@ -105,7 +102,6 @@ static void	*ft_clean(char **strs_ar, int count)
 	int	i;
 
 	i = 0;
-    count += 1;
 	while (i < count)
 	{
 		free(strs_ar[i]);
