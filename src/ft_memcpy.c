@@ -8,8 +8,8 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned char		*dstr;
-	const unsigned char	*sstr;
+	unsigned char	*dstr;
+	unsigned char   *sstr;
 
 	dstr = dst;
 	sstr = src;

@@ -10,7 +10,7 @@ int ft_atoi(const char *s)
 
 	nbr = 0;
 	pos = 1;
-	while((*s >=9 && *s <= 13) || *s == 32)
+	while((*s >= 9 && *s <= 13) || *s == 32)
 		s++;
 	if (*s == '-')
 		pos = -1;

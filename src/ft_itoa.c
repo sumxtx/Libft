@@ -1,10 +1,11 @@
 
+/* Convert from ascii into integer */
+
 #include "libft.h"
 
-char	*is_positive(long count, long n);
-char	*is_negative(long count, long n);
-char	*is_else(long n);
-
+static char	*is_positive(long count, long n);
+static char	*is_negative(long count, long n);
+static char	*is_else(long n);
 
 char	*ft_itoa(int n)
 {
@@ -12,8 +13,8 @@ char	*ft_itoa(int n)
 	long	count;
 	char	*strint;
 
-	count = 0;
 	m = n;
+	count = 0;
 	while (m)
 	{
 		m /= 10;
@@ -28,7 +29,7 @@ char	*ft_itoa(int n)
 	return (strint);
 }
 
-char	*is_positive(long count, long n)
+static char	*is_positive(long count, long n)
 {
 	char			*strint;
 
@@ -47,7 +48,7 @@ char	*is_positive(long count, long n)
 	return (NULL);
 }
 
-char	*is_negative(long count, long n)
+static char	*is_negative(long count, long n)
 {
 	char			*strint;
 
@@ -68,7 +69,7 @@ char	*is_negative(long count, long n)
 	return (NULL);
 }
 
-char	*is_else(long n)
+static char	*is_else(long n)
 {
 	char	*strint;
 

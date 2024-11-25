@@ -1,33 +1,33 @@
 
 #include "libft.h"
 
-/*Allocates (with malloc(3)) and returns a substring from the string ’s’.
+/*  Allocates with malloc(3) and returns a substring from the string ’s’.
  * The substring begins at index ’start’ and is of maximum size ’len’.*/
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char			*newstr;
-	unsigned int	n_ind;
-	unsigned int	s_len;
+	char			*new;
+	unsigned int	i;
+	unsigned int	slen;
 
 	if (s == NULL)
 		return (NULL);
-	s_len = ft_strlen(s);
-	if (start >= s_len)
+	slen = ft_strlen(s);
+	if (start >= slen)
 		len = 0;
-	if (len > (s_len - start))
-		len = s_len - start;
-	newstr = (char *) malloc((len + 1) * sizeof(char));
-	if (newstr == NULL)
+	if (len > (slen - start))
+		len = slen - start;
+	new = (char *) malloc((len + 1) * sizeof(char));
+	if (new == NULL)
 		return (NULL);
-	n_ind = 0;
-	while (len > 0 && s[start] != '\0')
+	i = 0;
+	while ((len > 0) && (s[start] != '\0'))
 	{
-		newstr[n_ind] = s[start];
+		new[i] = s[start];
 		len--;
 		start++;
-		n_ind++;
+		i++;
 	}
-	newstr[n_ind] = '\0';
-	return (newstr);
+	new[i] = '\0';
+	return (new);
 }

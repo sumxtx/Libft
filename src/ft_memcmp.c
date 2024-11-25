@@ -8,9 +8,9 @@ int	ft_memcmp(const void *str1, const void *str2, size_t n)
 
 	s1 = (unsigned char *) str1;
 	s2 = (unsigned char *) str2;
-	if (!n)
+	if (n == 0)
 		return (0);
-	while (--n && *s1 == *s2)
+	while ((*s1 == *s2) && --n)
 	{
 		s1++;
 		s2++;
