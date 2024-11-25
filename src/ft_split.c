@@ -105,6 +105,7 @@ static void	*ft_clean(char **strs_ar, int count)
 	int	i;
 
 	i = 0;
+    count += 1;
 	while (i < count)
 	{
 		free(strs_ar[i]);
