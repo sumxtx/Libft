@@ -109,12 +109,12 @@ static void	*ft_clean(char **strs_ar, int count)
     {
         free(strs_ar[i]);
         strs_ar[i] = NULL;
-        printf("free");
+        printf("free sub");
         i++;
     }
     free(strs_ar);
     strs_ar = NULL;
-    printf("free");
+    printf("free main");
     return (NULL);
 }
 #include <stdio.h>
