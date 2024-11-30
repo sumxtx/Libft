@@ -47,4 +47,6 @@ size_t ft_strnlen(const char *s, size_t maxlen);
 size_t ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 
+int	ft_dec_to_hex(unsigned int nbr, int fd);
+
 #endif

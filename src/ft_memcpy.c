@@ -12,7 +12,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	unsigned char   *sstr;
 
 	dstr = dst;
-	sstr = src;
+	sstr = (void *)src;
 	if (dst == NULL && src == NULL)
 		return (NULL);
 	while (n--)

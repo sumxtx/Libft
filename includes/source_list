@@ -46,4 +46,5 @@ SRC_FILES =\
 	lstdelone_bonus\
 	lstclear_bonus \
 	lstiter_bonus \
-	lstmap_bonus
+	lstmap_bonus \
+	dec_to_hex\
