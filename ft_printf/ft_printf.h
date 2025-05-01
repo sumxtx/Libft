@@ -7,13 +7,10 @@
 # include <limits.h>
 
 int	ft_printf(const char *format, ...);
-int	ft_putptr(void *ptr);
-int	ft_putnbr(char *subs, long d);
-int	ft_putuint(char *subs, unsigned int d);
-int	ft_putuintptr(char *subs, unsigned long d);
-int	ft_putchar(int ch);
-int	ft_putstr(char *str);
-int	ft_puthex(char *subs, unsigned int d);
-int	formatspec(const char *format, va_list params);
+int	_formatspec(const char *format, va_list params);
+int	_ft_putchar(int fd, int ch);
+int	_ft_putstr(char *str);
+int	_ft_putnbr(char *subs, long d);
+int	_ft_puthex_uint(char *subs, unsigned long nbr, int base, void *ptr);
 
 #endif
