@@ -17,6 +17,10 @@ OBJ_DIR 	= ./obj/
 BIN_DIR 	= ./bin/
 TST_DIR		= ./tests/
 
+# Subdirectories (printf, and getnextline)
+SUB_DIRS = ft_printf
+# \ get_next_line
+
 # Archive Creation 
 ARS	= ar -rcs
 
@@ -34,12 +38,13 @@ endif
 # Include Source File list
 -include ./includes/source_list
 
-.PHONY:	all clean fclean re help $(MAIN)
+.PHONY:	all clean fclean re help $(MAIN) bundle
 
 # Create Object files From Source Files (filename.c -> filename.o)
 OBJS := $(foreach file,$(SRC_FILES),$(addprefix $(OBJ_DIR)ft_, $(addsuffix .o,$(file))))
 DEPS := $(foreach file,$(SRC_FILES),$(addprefix $(OBJ_DIR)ft_, $(addsuffix .d,$(file))))
 
+# Rule to make a main if we pass it per parameter, make help as default instead
 ifndef MAIN
 	.DEFAULT_GOAL = help
 else
@@ -62,13 +67,18 @@ $(OBJ_DIR):
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile $(INC_DIR)$(HEADER) $(INC_DIR)$(HEADER) $(INC_DIR)$(LST_HEADER)
 	$(CC) $(CFLAGS) $(DEP_FLAGS) -I $(INC_DIR) -c $< -o $@
 
+
 # Make Recipe for a Single Binary (Debugging and testing purposes)
-# for example:
 $(MAIN): $(BIN_DIR) $(NAME)
 	$(CC) $(CFLAGS) -I $(INC_DIR) $(MAIN_SRC) $(NAME) -o $(BIN_DIR)$(MAIN)
 
 $(BIN_DIR):
 	@mkdir $(BIN_DIR)
+
+
+# Make recipes for the true all, "bundle". Makes libft printf and gextnextline
+
+
 
 # Cleaning and Deletions
 clean:
@@ -86,6 +96,9 @@ help:
 	@echo ""
 	@echo "$$ make all"
 	@echo "	Build the archive (libft.a)"
+	@echo ""
+	@echo "$$ make bundle"
+	@echo "	Build the archive (libft.a) containing ft_printf and get_next_line"
 	@echo ""
 	@echo "$$ make all VERBOSE=y"
 	@echo "	Build the archive (libft.a) without --silent flag"

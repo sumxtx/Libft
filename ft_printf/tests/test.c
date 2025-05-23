@@ -125,7 +125,7 @@ void test_X()
   ft_printf("%X%Xx%X", 1, 2, -3);
 }
 
-int main(int argn, char **argv)
+int main(void)
 {
   simple_test();
   test_c();

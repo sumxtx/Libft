@@ -2,6 +2,6 @@
 *.out
 *.dSYM/
 *.o
-/obj
-/bin
+**/obj
+**/bin
 *.d
