@@ -1,6 +1,4 @@
 #include "get_next_line.h"
-#include <fcntl.h>
-#include <unistd.h>
 
 char *get_next_line(int fd)
 {
@@ -13,14 +11,12 @@ char *get_next_line(int fd)
     return (NULL/*gnl_clean*/);
 
   eflag = 1;
+  line = NULL;
   if(!stg) // first read?
-    eflag = read_to_stg(fd, rbuffer, stg);
+    eflag = read_to_stg(fd, rbuffer, &stg);
 
   if(eflag >= 0)  // look for line o return whatever we read without line
     line = line_parser(line, stg);
-
-  if(!line) // error
-    eflag = clean_stg(line, rbuffer, stg);
 
   if(eflag < 0 || (line == NULL))
     return(NULL/*gnl_clean*/);
@@ -28,49 +24,44 @@ char *get_next_line(int fd)
   return line;
 }
 
-int read_to_stg(int fd, char *rbuffer, char *stg)
+int read_to_stg(int fd, char *rbuffer, char **stg)
 {
-  int found;
-  found = 0;
+  int eflag;
+  eflag = -1;
   // read to rbuffer
   while(eflag != 0)
   {
     eflag = read(fd, rbuffer, BUFFER_SIZE);
     if(eflag < 0)
       return (-1); //fail
-    rbuffer[eflag] = '\0'; // or [&eflag?]
-    stg = gnl_strjoin(stg, rbuffer);
+    rbuffer[eflag] = '\0';
+    *stg = gnl_strjoin(*stg, rbuffer);
     if(stg == NULL)
       return (-1); //fail
-    found = gnl_strchr(rbuffer, CHR);
-    if(found)
-      return(found); // line found !!
+    eflag = gnl_strchr(rbuffer, CHR);
+    if(eflag)
+      return(eflag); // line found !!
   }
   return (0); //EOF
 }
 
 char *line_parser(char *line, char *stg)
 {
-  int line_pos;
-  int flag_line;
-
-  line_pos = 0; 
-  flag_line = 0;
-  while(stg[line_pos] != '\0')
+  int eflag;
+  eflag = gnl_strchr(stg, CHR);
+  if(eflag)
   {
-    if(stg[line_pos] == CHR) // habemus linea
-    {
-      flag_line = 1;
-      break ;
-    }
-    line_pos++;
+    line = gnl_strndup(line, stg, eflag); // dup stg to line until line
+    if(!line)
+      return (NULL);
+    stg = cleant_stg(stg, eflag);
   }
-  if(!str_n_dup(line, stg, line_pos)) // dup stg to line until line
-    return (NULL);
-  if(flag_line == 1)
-    stg = cleant_stg(line, stg, line_pos);
-  else 
-    //clean storage
+  else
+  {
+    line = stg;
+    free(stg);
+    stg = NULL;
+  }
   return (line);
 }
 
@@ -78,16 +69,19 @@ char *cleant_stg(char *stg, int line_pos)
 {
   char *new;
   int new_size;
+  int i;
 
-  new_size = str_s_len(stg, line_pos, '\0');
+  new_size = gnl_strlen((stg + line_pos));
   new = (char *) malloc(new_size + 1);
   if(!new)
     return (NULL);
   new[new_size] = '\0';
-  while(*stg != '\0')
+  i = 0;
+  while(stg[i] != '\0' && new_size)
   {
-    --new_size;
-    new[new_size] = stg[new_size];
+    new[i] = stg[line_pos + i];
+    i++;
+    new_size--;
   }
   free(stg);
   stg = NULL;

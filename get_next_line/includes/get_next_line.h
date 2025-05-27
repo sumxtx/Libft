@@ -5,13 +5,14 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stddef.h>
 
 # define BUFFER_SIZE 42
 # define CHR 10
 # define END 0
 
 int   gnl_clean();
-int   read_to_stg(int fd, char *rbuffer, char *stg);
+int   read_to_stg(int fd, char *rbuffer, char **stg);
 char  *line_parser(char *line, char *stg);
 char  *cleant_stg(char *stg, int line_pos);
 char  *get_next_line(int fd);

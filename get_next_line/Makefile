@@ -47,10 +47,10 @@ $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_DIR)$(HEADER) Makefile
-	$(CC) $(CFLAGS) $(DEP_FLAGS) -I $(INC_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -g $(DEP_FLAGS) -I $(INC_DIR) -c $< -o $@
 
 bin: $(BIN_DIR) $(NAME)
-	$(CC) -g -I $(INC_DIR) $(MAIN_SRC) $(NAME) -o $(BIN_DIR)$(BIN)
+	$(CC) $(CFLAGS) -g -I $(INC_DIR) $(MAIN_SRC) $(NAME) -o $(BIN_DIR)$(BIN)
 
 $(BIN_DIR):
 	@mkdir $(BIN_DIR)
