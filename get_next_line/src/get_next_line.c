@@ -16,7 +16,7 @@ char *get_next_line(int fd)
     eflag = read_to_stg(fd, rbuffer, &stg);
 
   if(eflag >= 0)  // look for line o return whatever we read without line
-    line = line_parser(line, stg);
+    line = line_parser(line, &stg, eflag);
 
   if(eflag < 0 || (line == NULL))
     return(NULL/*gnl_clean*/);
@@ -36,7 +36,7 @@ int read_to_stg(int fd, char *rbuffer, char **stg)
       return (-1); //fail
     rbuffer[eflag] = '\0';
     *stg = gnl_strjoin(*stg, rbuffer);
-    if(stg == NULL)
+    if(*stg == NULL)
       return (-1); //fail
     eflag = gnl_strchr(rbuffer, CHR);
     if(eflag)
@@ -45,47 +45,31 @@ int read_to_stg(int fd, char *rbuffer, char **stg)
   return (0); //EOF
 }
 
-char *line_parser(char *line, char *stg)
+char *line_parser(char *line, char **stg, int eflag)
 {
-  int eflag;
-  eflag = gnl_strchr(stg, CHR);
-  if(eflag)
-  {
-    line = gnl_strndup(line, stg, eflag); // dup stg to line until line
-    if(!line)
-      return (NULL);
-    stg = cleant_stg(stg, eflag);
-  }
-  else
-  {
-    line = stg;
-    free(stg);
-    stg = NULL;
-  }
+  if(!eflag)
+    eflag = gnl_strlen(*stg);
+  line = gnl_strndup(line, *stg, eflag); // dup stg to line until line
+  if(!line)
+    return (NULL);
+  *stg = cleant_stg(*stg, eflag);
   return (line);
 }
 
 char *cleant_stg(char *stg, int line_pos)
 {
-  char *new;
-  int new_size;
   int i;
-
-  new_size = gnl_strlen((stg + line_pos));
-  new = (char *) malloc(new_size + 1);
-  if(!new)
-    return (NULL);
-  new[new_size] = '\0';
+  int new_size;
+  new_size = gnl_strlen((stg + line_pos + 1));
   i = 0;
   while(stg[i] != '\0' && new_size)
   {
-    new[i] = stg[line_pos + i];
+    stg[i] = stg[line_pos + i];
     i++;
     new_size--;
   }
-  free(stg);
-  stg = NULL;
-  return new;
+  stg[line_pos + i] = '\0';
+  return stg;
 }
 
 int gnl_clean()

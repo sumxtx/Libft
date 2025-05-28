@@ -13,7 +13,7 @@
 
 int   gnl_clean();
 int   read_to_stg(int fd, char *rbuffer, char **stg);
-char  *line_parser(char *line, char *stg);
+char  *line_parser(char *line, char **stg, int eflag);
 char  *cleant_stg(char *stg, int line_pos);
 char  *get_next_line(int fd);
 
