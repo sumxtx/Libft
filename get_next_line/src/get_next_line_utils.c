@@ -64,7 +64,7 @@ int gnl_strchr(char *str, int chr)
       return pos;
     pos++;
   }
-  return (0);
+  return -1;
 }
 
 char *gnl_strndup(char *nline, char *stg, int line_pos)
