@@ -20,7 +20,7 @@ char *get_next_line(int fd)
     }
   }
   eflag = read_to_stg(fd, rbuffer, &stg);
-  if(eflag < 0)
+  if(eflag <= 0)
     /*error*/return (NULL);
   line = line_parser(line, &stg, eflag);
   /* if ! line
@@ -43,7 +43,7 @@ int read_to_stg(int fd, char *rbuffer, char **stg)
     if(*stg == NULL)
       return (-1); //fail
     eflag = gnl_strchr(*stg, CHR);
-    if(eflag)
+    if(eflag >= 0)
       return(eflag); // line found !!
   }
   return (0); //EOF

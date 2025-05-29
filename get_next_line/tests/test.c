@@ -1,10 +1,16 @@
 #include <stdio.h>
 #include "get_next_line.h"
 
-int main(void)
+int main(int ac, char **av)
 {
+  if (ac != 2)
+  {
+    printf("./test <file path>");
+    return -1;
+  }
+  
   // Open file get file descriptor and hand error
-  int fd = open("./array.c", O_RDONLY);
+  int fd = open(av[1], O_RDONLY);
   if(fd == -1)
   {
     printf("fd: %d\n", fd);
