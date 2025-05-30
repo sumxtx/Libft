@@ -22,7 +22,7 @@ int main(int ac, char **av)
   char *line; // Not starting this shit to null is a bug?
   while(line != NULL)
   {
-    line = get_next_line(fd);
+    line = get_next_line(0);
     printf("%s", line);
     while(getc != CHR)
     {
