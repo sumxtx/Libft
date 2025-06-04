@@ -6,6 +6,12 @@
 # include <stdio.h>
 # include <errno.h>
 # include <string.h>
+# include <stdarg.h>
+# include <assert.h>
+# include "colors.h"
+
+# define pcolor_error(M, ...) fprintf(stdout, "%s [ERROR] %sin file:%s%s%s:%d " M "\n",BRED,NC,CYN,__FILE__ ,NC,__LINE__,##__VA_ARGS__)
+# define  pcolor_warn(M, ...) fprintf(stdout, "%s [WARN]  %sin file:%s%s%s:%d " M "\n",YEL,NC,CYN,__FILE__ ,NC,__LINE__,##__VA_ARGS__)
 
 # ifdef NDEBUG
 # define debug(M, ...)
@@ -37,5 +43,6 @@
 
 #define check_debug(A, M, ...) if(!(A)) { debug(M, ##__VA_ARGS__);\
   errno=0; goto error; }
+
 
 #endif

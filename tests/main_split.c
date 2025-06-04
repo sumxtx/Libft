@@ -1,129 +1,88 @@
+
+#include "dbg.h"
 #include "libft.h"
 
-char		*create_sub(const char *s, char **str_ar, int n_word, char c);
-void		fill_sub(const char *s, char **str_ar, int n_word, char c);
-size_t		count_words(const char *s, char c);
-static void	*ft_clean(char **str_ar, int count);
+#define NDEBUG
 
-char	**ft_split(const char *s, char c)
+char **init_str_array(int n, ...);
+int test_single_split(int number, char *s, char delim, char **expected);
+int is_equal_str(int number, char **expected, char **result);
+
+int test_split()
 {
-    int		n_word;
-    char	**str_ar;
-
-    n_word = count_words(s, c);
-    printf("n_word: %d\n", n_word);
-    str_ar = (char **) malloc((n_word + 1) * sizeof(char *));
-    if (!str_ar)
-        return (NULL);
-    if ((create_sub(s, str_ar, n_word, c)) == NULL)
-        return (ft_clean(str_ar, n_word + 1));
-    fill_sub(s, str_ar, n_word, c);
-    return (str_ar);
+  char **expected = init_str_array(2, "hello!", NULL);
+  return (test_single_split(1,"xxxhello!",'x', expected));
 }
 
-size_t	count_words(const char *s, char c)
+int main(int ac, char **av)
 {
-    int	i;
-    int	count;
-
-    i = 0;
-    count = 0;
-    while (s[i] != '\0')
+  static int ni;
+  char **ss;
+  if(ac == 1)
+  {
+    test_split();
+  }
+  if (ac == 3)
+  {
+    int i = 0;
+    ss = ft_split(av[1], atoi(av[2]));
+    ni = ft_strlen(*ss);
+    while(i < ni)
     {
-        while (s[i] == c && s[i] != '\0')
-            i++;
-        if (s[i] != c && s[i] != '\0')
-        {
-            count++;
-            i++;
-        }
-        while (s[i] != c && s[i] != '\0')
-            i++;
+      //ft_printf("%s", ss[i]);
+      printf("%s", ss[i]);
+      free(ss[i]);
+      i++;
     }
-    return (count);
+    free(ss[i]);
+    free(ss);
+  }
+  else
+  {
+    //ft_print("");
+    printf("l");
+  }
 }
 
-char	*create_sub(const char *s, char **str_ar, int n_word, char c)
+char **init_str_array(int n, ...)
 {
-    int	j;
-    int	size;
+  va_list args;
+  char **result = ft_calloc(n, sizeof(char *));
 
-    j = 0;
-    size = 0;
-    while (j < n_word)
+  va_start(args, n);
+  for(int i = 0; i < n; i ++)
+    result[i] = va_arg(args, char *);
+
+  va_end(args);
+  return result;
+}
+
+int test_single_split(int number, char *s, char delim, char **expected)
+{
+  char **result = ft_split(s, delim);
+
+  int flag = 0;
+  flag = is_equal_str(number, expected, result);
+  if(flag)
+    pcolor_error();
+  return flag;
+}
+
+int is_equal_str(int number, char **expected, char **result)
+{
+  int i = 0;
+  bool same = true;
+  int flag = 0;
+  while(expected[i] != NULL)
+  {
+    if (strcmp(expected[i], result[i]) != 0)
+      same = false;
+    if(!same)
     {
-        while (*s)
-        {
-            while (*s == c && *s)
-                s++;
-            while (*s != c && *s)
-            {
-                size++;
-                s++;
-            }
-            str_ar[j] = malloc(size * sizeof(char) + 1);
-            if (!str_ar[j])
-                return (NULL);
-            j++;
-            size = 0;
-        }
+      pcolor_error("Test: %d\nExpected: %s\n     Got: %s\n", number, expected[i], result[i]);
+      flag = 1;
     }
-    return ("succes");
-}
-
-void	fill_sub(const char *s, char **str_ar, int n_word, char c)
-{
-    int	i;
-    int	j;
-    int	sub_i;
-
-    i = 0;
-    j = 0;
-    sub_i = 0;
-    str_ar[n_word] = NULL;
-    while (sub_i < n_word)
-    {
-        while (s[i] == c && s[i] != '\0')
-            i++;
-        if (s[i] != c && s[i] != '\0')
-        {
-            while (s[i] != c && s[i] != '\0')
-            {
-                str_ar[sub_i][j] = s[i];
-                i++;
-                j++;
-            }
-            str_ar[sub_i][j] = '\0';
-            sub_i++;
-            j = 0;
-        }
-    }
-}
-
-static void	*ft_clean(char **strs_ar, int count)
-{
-    int	i;
-
-    i = 0;
-    while (i < count)
-    {
-        free(strs_ar[i]);
-        strs_ar[i] = NULL;
-        printf("free sub");
-        i++;
-    }
-    free(strs_ar);
-    strs_ar = NULL;
-    printf("free main");
-    return (NULL);
-}
-#include <stdio.h>
-int main()
-{
-    static int ni;
-    char **s = ft_split("hello!zzzzzzzz", 122);
-    for(ni = 0; s[ni] != NULL; ni++)
-        printf("%s", s[ni]);
-
-    ft_clean(s, ni+1);
+    i++;
+  }
+  return flag;
 }
