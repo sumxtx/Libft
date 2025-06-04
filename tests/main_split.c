@@ -8,10 +8,32 @@ char **init_str_array(int n, ...);
 int test_single_split(int number, char *s, char delim, char **expected);
 int is_equal_str(int number, char **expected, char **result);
 
-int test_split()
+void test_split()
 {
-  char **expected = init_str_array(2, "hello!", NULL);
-  return (test_single_split(1,"xxxhello!",'x', expected));
+  char **expected1;
+  expected1 = init_str_array(2, "hello!", NULL);
+
+  test_single_split(1,"xxxhello!",'x', expected1);
+  test_single_split(2, "hello!", ' ', expected1);
+  test_single_split(3, "xxxxxxxxhello!", 'x', expected1);
+  test_single_split(4, "hello!zzzzzzzz", 'z', expected1);
+  test_single_split(5, "\11\11\11\11hello!\11\11\11\11", '\11', expected1);
+
+
+  char **expected2;
+  expected2 = init_str_array(1, NULL);
+
+  test_single_split(6, "", 'a', expected2);
+  test_single_split(7, "ggggggggggg", 'g', expected2);
+  
+  char **expected3;
+  expected3 = init_str_array(5, "1", "2a,", "3", "--h", NULL);
+  test_single_split(8, "^^^1^^2a,^^^^3^^^^--h^^^^", '^', expected3);
+  
+  char **expected4;
+  expected4 = init_str_array(2, "nonempty", NULL);
+  test_single_split(9, "nonempty", '\0', expected4);
+
 }
 
 int main(int ac, char **av)
@@ -22,7 +44,7 @@ int main(int ac, char **av)
   {
     test_split();
   }
-  if (ac == 3)
+  else if (ac == 3)
   {
     int i = 0;
     ss = ft_split(av[1], atoi(av[2]));
@@ -71,16 +93,18 @@ int test_single_split(int number, char *s, char delim, char **expected)
 int is_equal_str(int number, char **expected, char **result)
 {
   int i = 0;
-  bool same = true;
   int flag = 0;
   while(expected[i] != NULL)
   {
     if (strcmp(expected[i], result[i]) != 0)
-      same = false;
-    if(!same)
     {
       pcolor_error("Test: %d\nExpected: %s\n     Got: %s\n", number, expected[i], result[i]);
       flag = 1;
+    }
+    else
+    {
+      pcolor_ok("Test: %d passed", number);
+      printf("%s[expected]:%s%s %s[got]:%s%s ", BCYN,NC,expected[i],BGRN,NC,result[i]);
     }
     i++;
   }

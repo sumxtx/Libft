@@ -10,8 +10,10 @@
 # include <assert.h>
 # include "colors.h"
 
-# define pcolor_error(M, ...) fprintf(stdout, "%s [ERROR] %sin file:%s%s%s:%d " M "\n",BRED,NC,CYN,__FILE__ ,NC,__LINE__,##__VA_ARGS__)
-# define  pcolor_warn(M, ...) fprintf(stdout, "%s [WARN]  %sin file:%s%s%s:%d " M "\n",YEL,NC,CYN,__FILE__ ,NC,__LINE__,##__VA_ARGS__)
+  
+# define pcolor_error(M, ...) fprintf(stdout, "\n%s [ERROR]  %sin file:%s%s%s:%d " M "\n",BRED,NC,CYN,__FILE__ ,NC,__LINE__,##__VA_ARGS__)
+# define  pcolor_warn(M, ...) fprintf(stdout, "\n%s [WARN]   %sin file:%s%s%s:%d " M "\n",YEL,NC,CYN,__FILE__ ,NC,__LINE__,##__VA_ARGS__)
+# define    pcolor_ok(M, ...) fprintf(stdout, "\n%s [PASSED] %sin file:%s%s%s:%d " M "\n",BGRN,NC,CYN,__FILE__ ,NC,__LINE__,##__VA_ARGS__)
 
 # ifdef NDEBUG
 # define debug(M, ...)
