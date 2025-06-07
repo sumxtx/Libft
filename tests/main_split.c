@@ -98,13 +98,13 @@ int is_equal_str(int number, char **expected, char **result)
   {
     if (strcmp(expected[i], result[i]) != 0)
     {
-      pcolor_error("Test: %d\nExpected: %s\n     Got: %s\n", number, expected[i], result[i]);
+      pcolor_error("Test: %d\nExpected: %s\n     Got: %s\n\n", number, expected[i], result[i]);
       flag = 1;
     }
     else
     {
       pcolor_ok("Test: %d passed", number);
-      printf("%s[expected]:%s%s %s[got]:%s%s ", BCYN,NC,expected[i],BGRN,NC,result[i]);
+      printf("%s[expected]:%s%s %s[got]:%s%s\n", BCYN,NC,expected[i],BGRN,NC,result[i]);
     }
     i++;
   }

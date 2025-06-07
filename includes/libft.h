@@ -5,6 +5,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+typedef struct test
+{
+    void *tes;
+} ixtest;
 
 int ft_isspace(int c);
 int ft_isalpha(int c);

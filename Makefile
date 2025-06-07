@@ -17,9 +17,14 @@ OBJ_DIR 	= ./obj/
 BIN_DIR 	= ./bin/
 TST_DIR		= ./tests/
 
-# Subdirectories (printf, and getnextline)
-SUB_DIRS = ft_printf
-# \ get_next_line
+# Subdirectories
+SUB_DIRS = ft_printf get_next_line
+
+# Target Bundle
+NAMEBUNDLE = libftall.a
+#SubTargets
+PRINTF = $(word 1, $(SUB_DIRS))/libftprintf.a
+GNL = $(word 2, $(SUB_DIRS))/get_next_line.a
 
 # Archive Creation 
 ARS	= ar -rcs
@@ -67,7 +72,6 @@ $(OBJ_DIR):
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile $(INC_DIR)$(HEADER) $(INC_DIR)$(HEADER) $(INC_DIR)$(LST_HEADER)
 	$(CC) $(CFLAGS) $(DEP_FLAGS) -I $(INC_DIR) -c $< -o $@
 
-
 # Make Recipe for a Single Binary (Debugging and testing purposes)
 $(MAIN): $(BIN_DIR) $(NAME)
 	$(CC) $(CFLAGS) -I $(INC_DIR) $(MAIN_SRC) $(NAME) -o $(BIN_DIR)$(MAIN)
@@ -75,8 +79,14 @@ $(MAIN): $(BIN_DIR) $(NAME)
 $(BIN_DIR):
 	@mkdir $(BIN_DIR)
 
+# Make Recipe for build all mains (Debugging and testing purposes)
+# TODO?
+
 
 # Make recipes for the true all, "bundle". Makes libft printf and gextnextline
+bundle: all
+	for dir in $(SUB_DIRS); do $(MAKE) -C $$dir; done
+	$(ARS) $(NAMEBUNDLE) $(OBJS) ft_printf/obj/*.o get_next_line/obj/*.o 
 
 
 

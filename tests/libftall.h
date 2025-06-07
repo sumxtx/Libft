@@ -1,0 +1,6 @@
+#include "colors.h"
+#include "dbg.h"
+#include "libft.h"
+#include "libft_lst.h"
+#include "ft_printf.h"
+#include "get_next_line.h"

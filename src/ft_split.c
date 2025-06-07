@@ -1,27 +1,30 @@
 
 #include "libft.h"
 
-char		*create_sub(const char *s, char **str_ar, int n_word, char c);
-void		fill_sub(const char *s, char **str_ar, int n_word, char c);
-size_t		count_words(const char *s, char c);
-static void	*ft_clean(char **str_ar, int count);
+int  count_words(const char *s, char c);
+char    *create_sub(const char *s, char **str_ar, int words, char c);
+void    fill_sub(const char *s, char **str_ar, int words, char c);
+void    *_ft_clean(char **str_ar, int count);
+
 
 char	**ft_split(const char *s, char c)
 {
-	int		n_word;
+	int		words;
 	char	**str_ar;
 
-	n_word = count_words(s, c);
-	str_ar = (char **) malloc((n_word + 1) * sizeof(char *));
+  if(!s)
+    return (NULL);
+	words = count_words(s, c);
+	str_ar = (char **) malloc((words + 1) * sizeof(char *));
 	if (!str_ar)
 		return (NULL);
-	if ((create_sub(s, str_ar, n_word, c)) == NULL)
-		return (ft_clean(str_ar, n_word + 1));
-	fill_sub(s, str_ar, n_word, c);
+	if ((create_sub(s, str_ar, words, c)) == NULL)
+		return (_ft_clean(str_ar, words + 1));
+	fill_sub(s, str_ar, words, c);
 	return (str_ar);
 }
 
-size_t	count_words(const char *s, char c)
+int	count_words(const char *s, char c)
 {
 	int	i;
 	int	count;
@@ -43,14 +46,14 @@ size_t	count_words(const char *s, char c)
 	return (count);
 }
 
-char	*create_sub(const char *s, char **str_ar, int n_word, char c)
+char	*create_sub(const char *s, char **str_ar, int words, char c)
 {
     int	j;
     int	size;
 
     j = 0;
     size = 0;
-    while (j < n_word)
+    while (j < words)
     {
         while (*s == c && *s != '\0')
             s++;
@@ -68,7 +71,7 @@ char	*create_sub(const char *s, char **str_ar, int n_word, char c)
     return ("succes");
 }
 
-void	fill_sub(const char *s, char **str_ar, int n_word, char c)
+void	fill_sub(const char *s, char **str_ar, int words, char c)
 {
 	int	i;
 	int	j;
@@ -77,8 +80,8 @@ void	fill_sub(const char *s, char **str_ar, int n_word, char c)
 	i = 0;
 	j = 0;
 	sub_i = 0;
-	str_ar[n_word] = '\0';
-	while (sub_i < n_word)
+	str_ar[words] = '\0';
+	while (sub_i < words)
 	{
 		while (s[i] == c && s[i] != '\0')
 			i++;
@@ -97,7 +100,7 @@ void	fill_sub(const char *s, char **str_ar, int n_word, char c)
 	}
 }
 
-static void	*ft_clean(char **strs_ar, int count)
+void	*_ft_clean(char **strs_ar, int count)
 {
 	int	i;
 

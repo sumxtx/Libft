@@ -7,3 +7,4 @@
 **/obj
 **/bin
 *.d
+**/.gdb_history

@@ -32,7 +32,6 @@ size_t ft_strlcpy(char *dst, const char *src, size_t size)
 			ft_memcpy(dst, src, size);
 			dst[size -1] = '\0';
 		}
-
 	}
 	else
 	{
